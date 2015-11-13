@@ -150,10 +150,12 @@ var Magnifier = function (evt, options) {
             curLens.style.backgroundPosition = '-' + curData.lensBgX + 'px -' +
                                                 curData.lensBgY + 'px';
 
-            curLarge.style.left = '-' + curData.largeL + 'px';
-            curLarge.style.top = '-' + curData.largeT + 'px';
-            curLarge.style.width = curData.largeW + 'px';
-            curLarge.style.height = curData.largeH + 'px';
+            if (curLarge) {
+                curLarge.style.left = '-' + curData.largeL + 'px';
+                curLarge.style.top = '-' + curData.largeT + 'px';
+                curLarge.style.width = curData.largeW + 'px';
+                curLarge.style.height = curData.largeH + 'px';
+            }
         },
         updateLensOnLoad = function (idx, thumb, large, largeWrapper) {
             var lens = $('#' + idx + '-lens'),
@@ -310,7 +312,9 @@ var Magnifier = function (evt, options) {
                 }
 
                 curLarge = $('#' + curIdx + '-large');
-                curLarge.className = 'magnifier-large';
+                if (curLarge) {
+                    curLarge.className = 'magnifier-large';
+                }
             } else if (curData.status === 1) {
                 curLens.className = 'magnifier-loader';
             }
@@ -351,9 +355,11 @@ var Magnifier = function (evt, options) {
                     curLens.className = 'magnifier-loader';
                 } else if (curData.status === 2) {
                     curLens.className = 'magnifier-lens';
-                    curLarge.className = 'magnifier-large';
-                    curLarge.style.left = '-' + curData.largeL + 'px';
-                    curLarge.style.top = '-' + curData.largeT + 'px';
+                    if (curLarge) {
+                        curLarge.className = 'magnifier-large';
+                        curLarge.style.left = '-' + curData.largeL + 'px';
+                        curLarge.style.top = '-' + curData.largeT + 'px';
+                    }
                 }
 
                 curLens.style.left = pos.l + 'px';
