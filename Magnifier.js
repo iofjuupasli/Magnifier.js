@@ -568,6 +568,14 @@ var Magnifier = function (evt, options) {
             largeObj.src = data[idx].largeUrl;
         });
 
+        evt.attach('blur', document, function (e) {
+            if (isOverThumb !== 0) {
+                onThumbLeave();
+            }
+
+            isOverThumb = 0;
+        });
+
         thumbObj.src = thumb.src;
     };
 
@@ -592,13 +600,5 @@ var Magnifier = function (evt, options) {
         if (curThumb !== null) {
             setThumbData(curThumb, curData);
         }
-    });
-
-    evt.attach('blur', document, function (e) {
-        if (isOverThumb !== 0) {
-            onThumbLeave();
-        }
-
-        isOverThumb = 0;
     });
 };
