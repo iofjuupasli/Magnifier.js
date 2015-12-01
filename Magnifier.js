@@ -568,7 +568,7 @@ var Magnifier = function (evt, options) {
             largeObj.src = data[idx].largeUrl;
         });
 
-        evt.attach('blur', document, function (e) {
+        evt.attach('blur', window, function (e) {
             if (isOverThumb !== 0) {
                 onThumbLeave();
             }
