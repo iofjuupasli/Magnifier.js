@@ -593,4 +593,12 @@ var Magnifier = function (evt, options) {
             setThumbData(curThumb, curData);
         }
     });
+
+    evt.attach('blur', document, function (e) {
+        if (isOverThumb !== 0) {
+            onThumbLeave();
+        }
+
+        isOverThumb = 0;
+    });
 };
